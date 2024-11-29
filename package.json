@@ -1,11 +1,11 @@
 {
-  "name": "notion-next",
+  "name": "notionnext",
   "version": "4.7.12",
-  "homepage": "https://github.com/tangly1024/NotionNextt.git",
+  "homepage": "https://jiangnanxiaohe.com",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tangly1024/NotionNextt.git"
+    "url": "https://jiangnanxiaohe.com"
   },
   "author": {
     "name": "江南小和",
