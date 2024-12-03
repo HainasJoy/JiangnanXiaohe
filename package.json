@@ -1,11 +1,11 @@
 {
-  //"name": "jiangnanxiaohe",
+  "name": "jiangnanxiaohe",
   "version": "4.7.11",
-  "homepage": "https://github.com/tangly1024/NotionNext.git",
+  "homepage": "https://jiangnanxiaohe.com",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tangly1024/NotionNext.git"
+    "url": "https://jiangnanxiaohe.com"
   },
   "author": {
     "name": "tangly",
