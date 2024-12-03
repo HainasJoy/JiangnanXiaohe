@@ -5,13 +5,13 @@ const BLOG = {
     process.env.NOTION_PAGE_ID ||
     '02ab3b8678004aa69e9e415905ef32a5,en:7c1d570661754c8fbc568e00a01fd70e',
   PSEUDO_STATIC: process.env.NEXT_PUBLIC_PSEUDO_STATIC || false, // 伪静态路径，开启后所有文章URL都以 .html 结尾。
-  NEXT_REVALIDATE_SECOND: process.env.NEXT_PUBLIC_REVALIDATE_SECOND || 5, // 更新内容缓存间隔 单位(秒)；即每个页面有5秒的纯静态期、此期间无论多少次访问都不会抓取notion数据；调大该值有助于节省Vercel资源、同时提升访问速率，但也会使文章更新有延迟。
+  NEXT_REVALIDATE_SECOND: process.env.NEXT_PUBLIC_REVALIDATE_SECOND || 864000, // 更新内容缓存间隔 单位(秒)；即每个页面有5秒的纯静态期、此期间无论多少次访问都不会抓取notion数据；调大该值有助于节省Vercel资源、同时提升访问速率，但也会使文章更新有延迟。
   THEME: process.env.NEXT_PUBLIC_THEME || 'heo', // 当前主题，在themes文件夹下可找到所有支持的主题；主题名称就是文件夹名，例如 example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
   THEME_SWITCH: process.env.NEXT_PUBLIC_THEME_SWITCH || false, // 是否显示切换主题按钮
   LANG: process.env.NEXT_PUBLIC_LANG || 'zh-CN', // e.g 'zh-CN','en-US'  see /lib/lang.js for more.
-  SINCE: process.env.NEXT_PUBLIC_SINCE || 2024, // e.g if leave this empty, current year will be used.
-  APPEARANCE: process.env.NEXT_PUBLIC_APPEARANCE || 'light', // ['light', 'dark', 'auto'], // light 日间模式 ， dark夜间模式， auto根据时间和主题自动夜间模式
-  APPEARANCE_DARK_TIME: process.env.NEXT_PUBLIC_APPEARANCE_DARK_TIME || [18, 6], // 夜间模式起至时间，false时关闭根据时间自动切换夜间模式
+  SINCE: process.env.NEXT_PUBLIC_SINCE || 2023, // e.g if leave this empty, current year will be used.
+  APPEARANCE: process.env.NEXT_PUBLIC_APPEARANCE || 'auto', // ['light', 'dark', 'auto'], // light 日间模式 ， dark夜间模式， auto根据时间和主题自动夜间模式
+  APPEARANCE_DARK_TIME: process.env.NEXT_PUBLIC_APPEARANCE_DARK_TIME || [23, 8], // 夜间模式起至时间，false时关闭根据时间自动切换夜间模式
 
   TAG_SORT_BY_COUNT: true, // 标签是否按照文章数量倒序排列，文章多的标签排在前。
   IS_TAG_COLOR_DISTINGUISHED:
@@ -22,12 +22,12 @@ const BLOG = {
     process.env.NEXT_PUBLIC_GREETING_WORDS ||
     '从零到一的创业项目.热门工具.人生经验分享',
 
-  CUSTOM_MENU: process.env.NEXT_PUBLIC_CUSTOM_MENU || false, // 支持Menu 类型，从3.12.0版本起，各主题将逐步支持灵活的二级菜单配置，替代了原来的Page类型，此配置是试验功能、默认关闭。
+  CUSTOM_MENU: process.env.NEXT_PUBLIC_CUSTOM_MENU || true, // 支持Menu 类型，从3.12.0版本起，各主题将逐步支持灵活的二级菜单配置，替代了原来的Page类型，此配置是试验功能、默认关闭。
 
   AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || '江南小和', // 您的昵称 例如 tangly1024
   BIO: process.env.NEXT_PUBLIC_BIO || '🏆跨境电商5年+ 工厂、独立站、互联网项目', // 作者简介
   LINK: process.env.NEXT_PUBLIC_LINK || 'https://jiangnanxiaohe.com/', // 网站地址
-  KEYWORDS: process.env.NEXT_PUBLIC_KEYWORD || '创业项目, 博客', // 网站关键词 英文逗号隔开
+  KEYWORDS: process.env.NEXT_PUBLIC_KEYWORD || '创业项目, 记录生活,分享资源,教程,博客', // 网站关键词 英文逗号隔开
 
   // 社交链接，不需要可留空白，例如 CONTACT_WEIBO:''
   CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@jiangnanxiaohe.com', // 邮箱地址 例如mail@tangly1024.com
@@ -59,37 +59,35 @@ const BLOG = {
   // START ************网站字体*****************
   // ['font-serif','font-sans'] 两种可选，分别是衬线和无衬线: 参考 https://www.jianshu.com/p/55e410bd2115
   // 后面空格隔开的font-light的字体粗细，留空是默认粗细；参考 https://www.tailwindcss.cn/docs/font-weight
-  FONT_STYLE: process.env.NEXT_PUBLIC_FONT_STYLE || 'font-sans font-light',
+  FONT_STYLE: process.env.NEXT_PUBLIC_FONT_STYLE || 'font-sans font-semibold',
   // 字体CSS 例如 https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css
   FONT_URL: [
-    // 'https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css',
-    'https://fonts.googleapis.com/css?family=Bitter&display=swap',
+    'https://npm.elemecdn.com/lxgw-wenkai-webfont@1.7.0/style.css',
+    'https://fonts.googleapis.com/css?family=Bitter&display=swap', // Bitter 用作英文数字的字体
     'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap',
     'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&display=swap'
   ],
   // 无衬线字体 例如'"LXGW WenKai"'
   FONT_SANS: [
-    // '"LXGW WenKai"',
     '"PingFang SC"',
-    '-apple-system',
     'BlinkMacSystemFont',
-    '"Hiragino Sans GB"',
-    '"Microsoft YaHei"',
+    '-apple-system',
+    'HarmonyOS_Regular',
+    '"LXGW WenKai"',
+    '"Apple Color Emoji"',
     '"Segoe UI Emoji"',
     '"Segoe UI Symbol"',
     '"Segoe UI"',
     '"Noto Sans SC"',
-    'HarmonyOS_Regular',
+    '"Microsoft YaHei"',
     '"Helvetica Neue"',
     'Helvetica',
     '"Source Han Sans SC"',
-    'Arial',
-    'sans-serif',
-    '"Apple Color Emoji"'
+    'Arial'
   ],
   // 衬线字体 例如'"LXGW WenKai"'
   FONT_SERIF: [
-    // '"LXGW WenKai"',
+    '"LXGW WenKai"',
     'Bitter',
     '"Noto Serif SC"',
     'SimSun',
@@ -102,7 +100,7 @@ const BLOG = {
   ],
   FONT_AWESOME:
     process.env.NEXT_PUBLIC_FONT_AWESOME_PATH ||
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', // font-awesome 字体图标地址; 可选 /css/all.min.css ， https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css
+    'https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.1/css/all.min.css', // font-awesome 字体图标地址; 可选 /css/all.min.css ， https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css
 
   // END ************网站字体*****************
 
@@ -111,6 +109,7 @@ const BLOG = {
     '-1': 'LayoutBase',
     '/': 'LayoutIndex',
     '/archive': 'LayoutArchive',
+    '/memos' : 'LayoutMemos',
     '/page/[page]': 'LayoutPostList',
     '/category/[category]': 'LayoutPostList',
     '/category/[category]/page/[page]': 'LayoutPostList',
@@ -134,7 +133,7 @@ const BLOG = {
   CAN_COPY: process.env.NEXT_PUBLIC_CAN_COPY || true, // 是否允许复制页面内容 默认允许，如果设置为false、则全栈禁止复制内容。
   // 自定义右键菜单
   CUSTOM_RIGHT_CLICK_CONTEXT_MENU:
-    process.env.NEXT_PUBLIC_CUSTOM_RIGHT_CLICK_CONTEXT_MENU || true, // 自定义右键菜单，覆盖系统菜单
+    process.env.NEXT_PUBLIC_CUSTOM_RIGHT_CLICK_CONTEXT_MENU || false, // 自定义右键菜单，覆盖系统菜单
   CUSTOM_RIGHT_CLICK_CONTEXT_MENU_THEME_SWITCH:
     process.env.NEXT_PUBLIC_CUSTOM_RIGHT_CLICK_CONTEXT_MENU_THEME_SWITCH ||
     true, // 是否显示切换主题
@@ -150,8 +149,8 @@ const BLOG = {
     process.env.NEXT_PUBLIC_CUSTOM_RIGHT_CLICK_CONTEXT_MENU_THEME_TAG || true, // 是否显示标签
 
   // 自定义外部脚本，外部样式
-  CUSTOM_EXTERNAL_JS: [''], // e.g. ['http://xx.com/script.js','http://xx.com/script.js']
-  CUSTOM_EXTERNAL_CSS: [''], // e.g. ['http://xx.com/style.css','http://xx.com/style.css']
+  CUSTOM_EXTERNAL_JS: ['https://cdn.jsdmirror.cn/npm/pace-js@latest/pace.min.js','https://cdn.jsdmirror.cn/npm/instant.page@5.2.0/instantpage.min.js'], 
+  CUSTOM_EXTERNAL_CSS: [''], 
 
   // 侧栏布局 是否反转(左变右,右变左) 已支持主题: hexo next medium fukasawa example
   LAYOUT_SIDEBAR_REVERSE:
@@ -163,7 +162,7 @@ const BLOG = {
   FACEBOOK_PAGE_ID: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID || '', // Facebook Page ID 來啟用 messenger 聊天功能
   FACEBOOK_APP_ID: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || '', // Facebook App ID 來啟用 messenger 聊天功能 获取: https://developers.facebook.com/
 
-  BEI_AN: process.env.NEXT_PUBLIC_BEI_AN || '', // 备案号 闽ICP备XXXXXXX
+  BEI_AN: process.env.NEXT_PUBLIC_BEI_AN || '粤ICP备202498980号', // 备案号 粤ICP备202498980号
 
   // START********代码相关********
   // PrismJs 代码相关
